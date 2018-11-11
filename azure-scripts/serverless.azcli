@@ -1,0 +1,46 @@
+az login;
+
+MY_IP=MY_IP
+LOCATION=westeurope
+RESOURCE_PREFIX=cs-arch-svrless-hmk
+RESOURCE_PREFIX_NH=csarchsrvlesshmk
+RESOURCE_GROUP=${RESOURCE_PREFIX}-rg
+
+az group create --location ${LOCATION} \
+    --name ${RESOURCE_GROUP};
+
+# STORAGE & QUEUE
+
+az storage account create --name ${RESOURCE_PREFIX_NH}storage \
+    --resource-group ${RESOURCE_GROUP} \
+    --sku Standard_LRS
+
+az storage queue create --name ${RESOURCE_PREFIX}-queue-002 \
+    --account-name ${RESOURCE_PREFIX_NH}storage
+
+# DATABASE
+
+az sql server create --name ${RESOURCE_PREFIX}-sqlserver \
+    --resource-group ${RESOURCE_GROUP} \
+    --location westeurope \
+    --admin-user SQLAdmin \
+    --admin-password MyDeepestSecret123;
+
+az sql server firewall-rule create --name ${RESOURCE_PREFIX}-sqlserver-fr \
+    --resource-group ${RESOURCE_GROUP} \
+    --start-ip-address ${MY_IP} \
+    --end-ip-address ${MY_IP} \
+    --server ${RESOURCE_PREFIX}-sqlserver;
+
+az sql db create --name ${RESOURCE_PREFIX}-db \
+    --resource-group ${RESOURCE_GROUP} \
+    --server ${RESOURCE_PREFIX}-sqlserver \
+    --tier Basic;
+
+# CLEAR RESOURCES   
+
+az group delete --name ${RESOURCE_GROUP} \
+    --no-wait \
+    --yes;
+
+az group exists --name ${RESOURCE_GROUP};

@@ -33,3 +33,6 @@ hs_err_pid*
 local.settings.json
 bin/
 obj/
+
+# Azure scripts
+azure-scripts/configs.txt
