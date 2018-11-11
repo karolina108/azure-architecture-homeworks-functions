@@ -1,4 +1,4 @@
-package pro.koliber.azure.arch;
+package pro.koliber.azure;
 
 import java.time.*;
 import com.microsoft.azure.functions.annotation.*;

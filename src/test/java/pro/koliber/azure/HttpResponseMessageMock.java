@@ -1,4 +1,4 @@
-package pro.koliber.azure.sandbox;
+package pro.koliber.azure;
 
 import com.microsoft.azure.functions.*;
 

@@ -1,4 +1,4 @@
-package pro.koliber.azure.arch;
+package pro.koliber.azure;
 
 import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
@@ -12,7 +12,7 @@ public class QueueTriggerFunction {
      */
     @FunctionName("QueueTriggerFunction")
     public void run(
-        @QueueTrigger(name = "message", queueName = "cs-arch-srvless-hmk-queue-001", connection = "b8757fcf2219412bafac") String message,
+        @QueueTrigger(name = "message", queueName = "cs-arch-srvless-hmk-queue-001", connection = "csarchsrvlesshmkstorage_STORAGE") String message,
         final ExecutionContext context
     ) {
         context.getLogger().info("Java Queue trigger function processed a message: " + message);
