@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class AmbientMetric {
 
+    private Long id = 0L;
+
     private String deviceId;
 
     private String metricDatetime;
@@ -14,6 +16,13 @@ public class AmbientMetric {
 
     private String humidity;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDeviceId() {
         return deviceId;

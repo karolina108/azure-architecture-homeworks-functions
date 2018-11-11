@@ -1,6 +1,8 @@
 package pro.koliber.azure;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+
 import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
 import pro.koliber.azure.ambient.AmbientMetric;
@@ -20,10 +22,14 @@ public class TimerTriggerFunction {
     ) {
         context.getLogger().info("Java Timer trigger function executed at: " + LocalDateTime.now());
 
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = now.format(formatter);
+
         AmbientMetric ambientMetric = new AmbientMetric();
 
         ambientMetric.setDeviceId("MyDeviceID123455677");
-        ambientMetric.setMetricDatetime(LocalDateTime.now().toString());
+        ambientMetric.setMetricDatetime(formatDateTime);
         ambientMetric.setTemperature("25.60");
         ambientMetric.setPressure("1011.54");
         ambientMetric.setHumidity("0.48");

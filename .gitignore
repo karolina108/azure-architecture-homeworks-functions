@@ -36,6 +36,4 @@ obj/
 
 # Azure scripts
 azure-scripts/configs.txt
-
-# Sandbox files
-/src/main/java/pro/koliber/azure/sandbox/
+azure-scripts/local-script.azcli
