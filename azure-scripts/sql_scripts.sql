@@ -1,3 +1,5 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
 /* Create table */
 CREATE TABLE device_metrics (
     id int NOT NULL IDENTITY(1, 1) PRIMARY KEY,
