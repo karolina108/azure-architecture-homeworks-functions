@@ -67,7 +67,8 @@ public class AmbientMetric {
     @Override
     public String toString() {
         return "AmbientMetric{" +
-                "deviceId='" + deviceId + '\'' +
+                "id=" + id +
+                ", deviceId='" + deviceId + '\'' +
                 ", metricDatetime='" + metricDatetime + '\'' +
                 ", temperature='" + temperature + '\'' +
                 ", pressure='" + pressure + '\'' +
