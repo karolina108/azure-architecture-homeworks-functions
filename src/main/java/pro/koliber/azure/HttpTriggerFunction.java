@@ -7,21 +7,16 @@ import com.microsoft.azure.functions.*;
 import pro.koliber.azure.ambient.AmbientMetric;
 
 /**
- * Azure Functions with HTTP Trigger.
+ * Azure Function with HTTP Trigger. Selects ambient metrics from a database that were collected on a given date.
  */
 public class HttpTriggerFunction {
-    /**
-     * This function listens at endpoint "/api/HttpTriggerFunction". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerFunction
-     * 2. curl {your host}/api/HttpTriggerFunction?name=HTTP%20Query
-     */
+
     @FunctionName("HttpTriggerFunction")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processed a request.");
 
-        // Parse query parameter
         String query = request.getQueryParameters().get("date");
         String date = request.getBody().orElse(query);
 

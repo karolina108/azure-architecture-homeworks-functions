@@ -12,5 +12,3 @@ CREATE TABLE device_metrics (
 
 /* Check */
 SELECT * FROM device_metrics;
-
-SELECT * FROM device_metrics WHERE metric_datetime = "2018-11-11";

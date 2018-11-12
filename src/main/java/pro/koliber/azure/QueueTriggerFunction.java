@@ -7,12 +7,10 @@ import pro.koliber.azure.ambient.AmbientMetric;
 import java.sql.*;
 
 /**
- * Azure Functions with Azure Storage Queue trigger.
+ * Azure Function with Azure Storage Queue trigger. Gets messages with ambient metrics data and saves them to a database
  */
 public class QueueTriggerFunction {
-    /**
-     * This function will be invoked when a new message is received at the specified path. The message contents are provided as input to this function.
-     */
+
     @FunctionName("QueueTriggerFunction")
     public void run(
         @QueueTrigger(name = "message", queueName = "cs-arch-srvless-hmk-queue-001", connection = "csarchsrvlesshmkstorage_STORAGE") AmbientMetric message,

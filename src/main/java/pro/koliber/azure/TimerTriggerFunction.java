@@ -8,16 +8,14 @@ import com.microsoft.azure.functions.*;
 import pro.koliber.azure.ambient.AmbientMetric;
 
 /**
- * Azure Functions with Timer trigger.
+ * Azure Function with Timer trigger. Generates ambient metrics every minute and sends them to a queue.
  */
 public class TimerTriggerFunction {
-    /**
-     * This function will be invoked periodically according to the specified schedule.
-     */
+
     @FunctionName("TimerTriggerFunction")
     @QueueOutput(name="message", queueName = "cs-arch-srvless-hmk-queue-001", connection = "csarchsrvlesshmkstorage_STORAGE")
     public AmbientMetric run(
-        @TimerTrigger(name = "timerInfo", schedule = "0 */1 * * * *") String timerInfo,
+        @TimerTrigger(name = "timerInfo", schedule = "0 */5 * * * *") String timerInfo,
         final ExecutionContext context
     ) {
         context.getLogger().info("Java Timer trigger function executed at: " + LocalDateTime.now());
